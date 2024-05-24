@@ -562,7 +562,10 @@ second = (
 
 
 def main():
-    img = Image.new("RGB", (500, 500), "white")
+    img = Image.open(
+        r"C:/Desktop/ELEILIworking2234124124jii - 17.4workingmax/sigit/chapter6/ex6p4.jpg"
+    )
+
     draw = ImageDraw.Draw(img)
     draw.line(first, fill="black", width=2)
     draw.line(second, fill="black", width=2)
