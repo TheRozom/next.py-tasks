@@ -1,42 +1,25 @@
 def gen_secs():
-    """
-    Generator function to yield seconds from 0 to 59.
-
-    Yields:
-        int: The next second in the range 0 to 59.
-    """
+    """Generate seconds from 0 to 59."""
     for sec in range(60):
         yield sec
 
 
 def gen_minutes():
-    """
-    Generator function to yield minutes from 0 to 59.
-
-    Yields:
-        int: The next minute in the range 0 to 59.
-    """
+    """Generate minutes from 0 to 59."""
     for minute in range(60):
         yield minute
 
 
 def gen_hours():
-    """
-    Generator function to yield hours from 0 to 23.
-
-    Yields:
-        int: The next hour in the range 0 to 23.
-    """
+    """Generate hours from 0 to 23."""
     for hour in range(24):
         yield hour
 
 
 def gen_time():
     """
-    Generator function to yield time in HH:MM:SS format.
-
-    Yields:
-        str: The next time string in HH:MM:SS format.
+    Generate time in HH:MM:SS format.
+    Utilizes generators for hours, minutes, and seconds.
     """
     for hour in gen_hours():
         for minute in gen_minutes():
@@ -44,15 +27,19 @@ def gen_time():
                 yield "%02d:%02d:%02d" % (hour, minute, sec)
 
 
+for gt in gen_time():
+    print(gt)
+
+
 def gen_years(start=2019):
     """
-    Generator function to yield years starting from a given year.
-
+    Generate years starting from the specified year.
+    
     Args:
-        start (int): The starting year. Default is 2019.
-
+        start (int): Starting year. Default is 2019.
+    
     Yields:
-        int: The next year starting from the given start year.
+        int: Years starting from the specified year.
     """
     year = start
     while True:
@@ -61,26 +48,21 @@ def gen_years(start=2019):
 
 
 def gen_months():
-    """
-    Generator function to yield months from 1 to 12.
-
-    Yields:
-        int: The next month in the range 1 to 12.
-    """
+    """Generate months from 1 to 12."""
     for month in range(1, 13):
         yield month
 
 
 def gen_days(month, leap_year=True):
     """
-    Generator function to yield the number of days in a given month.
-
+    Generate days for the given month and year, considering leap years.
+    
     Args:
-        month (int): The month for which to yield the number of days.
-        leap_year (bool): True if the year is a leap year, False otherwise.
-
+        month (int): Month for which days are generated.
+        leap_year (bool): Boolean indicating if the year is a leap year. Default is True.
+    
     Returns:
-        int: The number of days in the given month.
+        int: Number of days in the specified month and year.
     """
     days_in_month = {
         1: 31,
@@ -101,10 +83,8 @@ def gen_days(month, leap_year=True):
 
 def gen_date():
     """
-    Generator function to yield dates and times from a starting point.
-
-    Yields:
-        str: The next date and time string in DD/MM/YYYY HH:MM:SS format.
+    Generate date and time in DD/MM/YYYY HH:MM:SS format.
+    Utilizes generators for years, months, days, hours, minutes, and seconds.
     """
     for year in gen_years():
         for month in gen_months():
@@ -113,25 +93,11 @@ def gen_date():
                 for hour in gen_hours():
                     for minute in gen_minutes():
                         for second in gen_secs():
-                            yield (
-                                f"{day:02d}/{month:02d}/{year} "
-                                f"{hour:02d}:{minute:02d}:{second:02d}"
-                            )
+                            yield f"{day:02d}/{month:02d}/{year} {hour:02d}:{minute:02d}:{second:02d}"
 
 
-def main():
-    """
-    Main function to demonstrate the usage of the date and time generators.
-
-    Generates and prints dates and times using nested generators.
-    Prints every millionth generated date and time up to 1,000,000 times.
-    """
-    gen = gen_date()
-    for i in range(1, 1_000_001):
-        next_date = next(gen)
-        if i % 1_000_000 == 0:
-            print(next_date)
-
-
-if __name__ == "__main__":
-    main()
+gen = gen_date()
+for i in range(1, 1000001):
+    next_date = next(gen)
+    if i % 1000000 == 0:
+        print(next_date)
