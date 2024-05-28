@@ -7,17 +7,26 @@ from Dragon import Dragon
 
 
 def main():
-    zoo_lst = []
-    zoo_lst.append(Dog("Brownie", 10))
-    zoo_lst.append(Cat("Zelda", 3))
-    zoo_lst.append(Skunk("Stinky", 0))
-    zoo_lst.append(Unicorn("Keith", 7))
-    zoo_lst.append(Dragon("Lizzy", 1450))
-    zoo_lst.append(Dog("Doggo", 80))
-    zoo_lst.append(Cat("Kitty", 80))
-    zoo_lst.append(Skunk("Stinky Jr.", 80))
-    zoo_lst.append(Unicorn("Clair", 80))
-    zoo_lst.append(Dragon("McFly", 80))
+    """
+    Main function to create a list of zoo animals and perform actions based on their type.
+
+    For each animal, if it is hungry, it will be fed until it is no longer hungry.
+    Each animal will then perform its talk method, and if it has specific methods (fetch_stick, chase_laser, etc.),
+    those will be called as well.
+    """
+    zoo_lst = [
+        Dog("Brownie", 10),
+        Cat("Zelda", 3),
+        Skunk("Stinky", 0),
+        Unicorn("Keith", 7),
+        Dragon("Lizzy", 1450),
+        Dog("Doggo", 80),
+        Cat("Kitty", 80),
+        Skunk("Stinky Jr.", 80),
+        Unicorn("Clair", 80),
+        Dragon("McFly", 80),
+    ]
+
     for animal in zoo_lst:
         if animal.is_hungry():
             print(type(animal).__name__, animal.get_name())

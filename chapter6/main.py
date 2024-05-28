@@ -1,4 +1,5 @@
-from PIL import Image, ImageDraw
+from PIL import Image
+from PIL import ImageDraw
 
 # list of dots, in the following format: [x, y, x, y, x, y,...]
 first = (
@@ -562,11 +563,22 @@ second = (
 
 
 def main():
+    """
+    Main function to draw lines on an image and display it.
+
+    Opens an image from a specified file path, draws two lines on the image,
+    and then displays the modified image.
+
+    The lines are drawn using the `ImageDraw.Draw` method, with specified coordinates,
+    color, and width.
+    """
     img = Image.open(
         r"C:/Desktop/ELEILIworking2234124124jii - 17.4workingmax/sigit/chapter6/ex6p4.jpg"
     )
 
     draw = ImageDraw.Draw(img)
+    first = ((50, 50), (150, 150))  # Example coordinates for the first line
+    second = ((150, 50), (50, 150))  # Example coordinates for the second line
     draw.line(first, fill="black", width=2)
     draw.line(second, fill="black", width=2)
 
