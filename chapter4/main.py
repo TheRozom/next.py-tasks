@@ -27,9 +27,6 @@ def gen_time():
                 yield "%02d:%02d:%02d" % (hour, minute, sec)
 
 
-for gt in gen_time():
-    print(gt)
-
 
 def gen_years(start=2019):
     """
@@ -96,8 +93,12 @@ def gen_date():
                             yield f"{day:02d}/{month:02d}/{year} {hour:02d}:{minute:02d}:{second:02d}"
 
 
-gen = gen_date()
-for i in range(1, 1000001):
-    next_date = next(gen)
-    if i % 1000000 == 0:
-        print(next_date)
+def main():
+    i = 0
+    for date in gen_date():
+        i += 1
+        if i % 1000000 == 0:
+            print(date)
+
+if __name__ == "__main__":
+    main()

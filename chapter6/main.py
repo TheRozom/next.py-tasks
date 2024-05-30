@@ -568,13 +568,10 @@ def main():
     The function opens an image file located at the specified path, draws lines on it, 
     and displays the modified image with the drawn lines.
     """
-    img = Image.open(
-        r"C:/Desktop/ELEILIworking2234124124jii - 17.4workingmax/sigit/chapter6/ex6p4.jpg"
-    )
-
+    img = Image.open("sigit/chapter6/ex6p4.jpg")
     draw = ImageDraw.Draw(img)
-    draw.line(first, fill="black", width=2)
-    draw.line(second, fill="black", width=2)
+    draw.line(first, fill="black", width=5)
+    draw.line(second, fill="black", width=5)
 
     img.show()
 
