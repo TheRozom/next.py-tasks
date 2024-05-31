@@ -572,7 +572,7 @@ def main():
     draw = ImageDraw.Draw(img)
     draw.line(first, fill="black", width=5)
     draw.line(second, fill="black", width=5)
-
+    img.save("sigit/chapter6/ex6p4_connected.png")
     img.show()
 
 
