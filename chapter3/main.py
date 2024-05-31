@@ -99,6 +99,11 @@ def check_input(username, password):
     elif len(username) > 16:
         raise UsernameTooLong()
 
+    if len(password) < 8:
+        raise PasswordTooShort()
+    elif len(password) > 40:
+        raise PasswordTooLong()
+
     has_upper = has_lower = has_digit = has_special = False
     for char in password:
         if char.isupper():
@@ -119,11 +124,7 @@ def check_input(username, password):
     elif not has_special:
         raise PasswordMissingSpecial()
 
-    if len(password) < 8:
-        raise PasswordTooShort()
-    elif len(password) > 40:
-        raise PasswordTooLong()
-
+  
     print("OK")
 
 def main():
